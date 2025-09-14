@@ -4,7 +4,7 @@ let computerScore = 0;
 
 // computer choice generating
 const computerChoice = () => {
-  let options = ["rock", "paper", "scissor"];
+  let options = ["Rock", "Paper", "Scissor"];
   let randomChoice = Math.floor(Math.random() * 3);
   return options[randomChoice];
 }; 
@@ -41,12 +41,18 @@ const playGame = (userchoice) => {
     drawGame();
   } else {
     let userWin = true;
-    if (userchoice === "rock") {
-      userWin = compChoice === "paper" ? false : true;
-    } else if (userchoice === "paper") {
-      userWin = compChoice === "scissor" ? false : true;
-    } else {
-      userWin = compChoice === "rock" ? false : true;
+    if (userchoice === "Rock" && compChoice === "Paper") {
+      userWin = false;
+    }
+    else if (userchoice === "Paper" && compChoice === "Scissor") {
+      userWin = false;
+    }
+    else if (userchoice === "Scissor" && compChoice === "Rock") {
+      userWin = false;
+    }
+    else if (userchoice === compChoice) {
+      drawGame();
+      return;
     }
     showWinner(userWin, userchoice, compChoice);
   }
